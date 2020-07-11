@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h2>Listado de Productos</h2>
+</div>
+
+<form asp-page-handler="download" method="post">
+    <button class="btn btn-success mb-3">Descargar Excel</button>
+</form>
+
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Stock</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model._products)
+        {
+            <tr>
+                <td> @product.Id</td>
+                <td> @product.Name</td>
+                <td> @product.Description</td>
+                <td> @product.Stock</td>
+                <td> @product.Price.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
